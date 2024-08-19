@@ -1,47 +1,68 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-:root{
-    --bg-main:#464646;
-    --bg-card:#2D2727;
-    --border-color: #efc745;
+:root {
+  --bg-main: #464646;
+  --bg-card: #2d2727;
+  --border-color: #efc745;
 }
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 5rem;
-    height: 100vh;
-    background-color: var(--bg-main);
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5rem;
+  height: 100vh;
+  background-color: var(--bg-main);
 }
-h1{
-    font-size: 3rem;
-    font-family: sans-serif;
-    color: #fff;
+h1 {
+  font-size: 3rem;
+  font-family: sans-serif;
+  color: #fff;
 }
-.card-section{
-    display: grid;
-    grid-template-columns: repeat(4 ,1fr);
-    grid-gap: 2rem;
+.card-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 2rem;
 }
-.card{
-    width: 5rem;
-    height: 5rem;
-    background-color: var(--bg-card);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    box-shadow: rgba(149, 157,165,0.2);
-    border-radius: 5px;
-    padding: 2rem;
-    /* margin: 2rem; */
+.card {
+  position: relative;
+  transition: all 0.4s linear;
+  transform-style: preserve-3d;
 }
-.card-selected{
-    border: 5px solid var(--border-color);
+.card,
+.back-card,
+.front-card {
+  height: 5rem;
+  width: 5rem;
 }
-.card-match{
-    border: 5px solid red;
+
+.back-card,
+.front-card {
+  position: absolute;
+  backface-visibility: hidden;
+}
+.front-card {
+  background-color: var(--border-color);
+  background-size: contain;
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 2rem;
+}
+.back-card {
+  transform: rotateY(180deg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 2rem;
+}
+
+.card-selected {
+  transform: rotateY(180deg);
+}
+.card-match .front-card {
+  background-color: var(--bg-card);
 }
